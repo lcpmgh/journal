@@ -124,9 +124,6 @@ server <- function(input, output, session) {
   tedi_jcr    <- jdat_jcr$Edition %>% unique() %>% sort()
   edit_jcr    <- tedi_jcr[!str_detect(tedi_jcr,"/")]
   quar_jcr    <- c("Q1"="Q1", "Q2"="Q2", "Q3"="Q3", "Q4"="Q4", "NONE"="")
-  # jciq_jcr    <- jdat_jcr$JCI_Q %>% unique() %>% .[str_length(.)>0] %>% sort()
-  # jifq_jcr    <- jdat_jcr$JIF_Q %>% unique() %>% .[str_length(.)>0] %>% sort()
-  # aisq_jcr    <- jdat_jcr$AIS_Q %>% unique() %>% .[str_length(.)>0] %>% sort()
   rank_xr     <- jdat_xr$Journal_ranking %>% unique() %>% sort() %>% set_names(paste0(.,"区"))
   trend_item  <- c("JIF", "JCI", "OA_P", "Articles", "Citations")
   
@@ -476,7 +473,7 @@ server <- function(input, output, session) {
         inputId  = "xr_item",
         label    = "展示列项目", 
         choices  = item_xr,
-        selected = item_xr[c(1,2,3,6)],
+        selected = item_xr,
         options  = pickerOptions(container="body", liveSearch=T, actionsBox=T, `selected-text-format`="count>3", `actions-box`=T),
         multiple = T
       ),
